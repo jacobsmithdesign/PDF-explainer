@@ -161,7 +161,7 @@ const Score = React.forwardRef<
     {...props}
   />
 ));
-ScoreCardContent.displayName = "ScoreCardContent";
+Score.displayName = "Score";
 
 export {
   ScoreCard,
