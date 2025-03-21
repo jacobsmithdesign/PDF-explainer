@@ -35,17 +35,26 @@ export default function Report({ overview, clearPDF }: OverviewProps) {
       <div className="container mx-auto max-w-6xl h-full">
         <div className="flex h-full">
           <div className="h-full bg-zinc-900 sm:rounded-lg relative w-full">
-            <div className="w-full border-b border-b-zinc-600 pt-2 pb-2 px-4 absolute bg-zinc-900/50 backdrop-blur-lg rounded-t-lg">
-              <h1 className="md:text-md text-xs">{overview.title}</h1>
+            <div className="w-full border-b border-b-zinc-600 pt-2 pb-2 px-4 absolute bg-zinc-900/50 backdrop-blur-lg rounded-t-lg ">
+              <h1 className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">
+                {overview.title}
+              </h1>
             </div>
-            <div className="h-full pt-12 flex">
+            <div className="h-full pt-9 flex">
               {/* <Navigation
                 clearPDF={clearPDF}
                 onSelectPage={setSelectedPage}
                 selectedPage={selectedPage}
               /> */}
-              <div className="overflow-y-scroll px-4 h-full pb-8 pt-4 chapter-scrollbar">
+              <div className="overflow-y-scroll px-4 h-full pb-2 pt-4 chapter-scrollbar">
                 <PageComponent overview={overview} />
+                <Button
+                  onClick={clearPDF}
+                  className="bg-primary hover:bg-primary/90 mx-auto flex"
+                >
+                  <FileText className="mr-2 h-4 w-4" />
+                  Try Another PDF
+                </Button>
               </div>
             </div>
           </div>

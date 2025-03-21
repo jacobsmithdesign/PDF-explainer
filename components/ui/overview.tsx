@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 
 import { RadialScore, Score, ScoreCard } from "../ui/score-card";
+import { Button } from "./button";
 type OverviewProps = {
   overview: Overview;
   clearPDF: () => void;
