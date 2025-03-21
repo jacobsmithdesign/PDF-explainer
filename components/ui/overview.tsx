@@ -56,7 +56,7 @@ const QuoteCard: React.FC<QuoteCardProps> = ({
     >
       <CardContent className="text-zinc-300 py-3">
         <CardDescription className="italic mb-4 sm:text-md text-sm text-foreground">
-          "{quote}"
+          &quot;{quote}&quot;
         </CardDescription>
         <CardFooter className="w-full flex justify-between p-0 items-end">
           <div className="flex flex-col text-xs sm:text-sm">

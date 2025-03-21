@@ -73,6 +73,7 @@ const RadialScore = React.forwardRef<
     </svg>
   );
 });
+RadialScore.displayName = "RadialScore";
 
 const ScoreCard = React.forwardRef<
   HTMLDivElement,
