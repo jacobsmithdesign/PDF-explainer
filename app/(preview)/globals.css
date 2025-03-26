@@ -30,12 +30,12 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    --scrollbar-track: #000000;
+    --scrollbar-track: #f4f4f5;
     --scrollbar-thumb: 100 100% 100%;
     --scrollbar-thumb: #d4d4d4;
-    --scrollbar-thumb-hover: #312f2f;
+    --scrollbar-thumb-hover: #71717a;
 
-    --scrollbar-track-chapter: rgb(24, 24, 27);
+    --scrollbar-track-chapter: rgb(244, 244, 245);
     --scrollbar-thumb-chapter: 100 100% 100%;
     --scrollbar-thumb-chapter: #d4d4d4;
   }
@@ -64,6 +64,14 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --scrollbar-track: #000000;
+    --scrollbar-thumb: 100 100% 100%;
+    --scrollbar-thumb: #52525b;
+    --scrollbar-thumb-hover: #312f2f;
+
+    --scrollbar-track-chapter: rgb(24, 24, 27);
+    --scrollbar-thumb-chapter: 100 100% 100%;
+    --scrollbar-thumb-chapter: #52525b;
   }
 }
 
