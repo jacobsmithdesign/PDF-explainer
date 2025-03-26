@@ -3,6 +3,9 @@ import { Metadata } from "next";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
+import MyThemeContext, {
+  MyThemeContextProvider,
+} from "../context/themeContext";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -19,11 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geist.className}`}>
-      <body>
-        <ThemeProvider attribute="class" enableSystem forcedTheme="dark">
-          <Toaster position="top-center" richColors />
-          {children}
-        </ThemeProvider>
+      <body className="">
+        <MyThemeContextProvider>
+          <ThemeProvider attribute="class" enableSystem>
+            <Toaster position="top-center" richColors />
+            {children}
+          </ThemeProvider>
+        </MyThemeContextProvider>
       </body>
     </html>
   );

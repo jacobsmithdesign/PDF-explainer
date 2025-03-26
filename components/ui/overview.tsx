@@ -34,7 +34,7 @@ const RankCard: React.FC<RankCardProps> = ({ rank, title, reason }) => {
         <RadialScore score={rank} className="mx-auto w-24 h-24 mb-8 mt-12" />
         <CardTitle className="text-center mb-2">{title}</CardTitle>
         <CardDescription>
-          <p className="text-center md:text-sm text-xs text-zinc-300">
+          <p className="text-center md:text-sm text-xs dark:text-zinc-300 text-zinc-800">
             {reason}
           </p>
         </CardDescription>
@@ -51,11 +51,11 @@ const QuoteCard: React.FC<QuoteCardProps> = ({
 }) => {
   return (
     <Card
-      className={`mb-2 bg-zinc-800 ${
+      className={`mb-2 dark:bg-zinc-800 bg-zinc-200 ${
         relevance > 8 && "bg-green-500/10 border-green-500/50"
       } `}
     >
-      <CardContent className="text-zinc-300 py-3">
+      <CardContent className="dark:text-zinc-300 py-3 text-foreground">
         <CardDescription className="italic mb-4 sm:text-md text-sm text-foreground">
           &quot;{quote}&quot;
         </CardDescription>
@@ -93,7 +93,9 @@ export const ReportOverview: React.FC<{ overview: Overview }> = ({
 
       <div className="mb-8">
         <h3 className="text-xl font-bold text-foreground mb-4">Overview</h3>
-        <p className="text-zinc-300 sm:text-lg text-md">{overview.overview}</p>
+        <p className="dark:text-zinc-300 text-zinc-700 sm:text-lg text-md text-foreground">
+          {overview.overview}
+        </p>
       </div>
 
       <div>

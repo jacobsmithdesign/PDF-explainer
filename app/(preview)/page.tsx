@@ -20,6 +20,7 @@ import NextLink from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { VercelIcon, GitIcon } from "@/components/icons";
 import Report from "@/components/report";
+import { ThemeButton } from "@/components/ui/themeButton";
 
 export default function ChatWithFiles() {
   const [files, setFiles] = useState<File[]>([]);
@@ -140,6 +141,16 @@ export default function ChatWithFiles() {
 
   const totalStages = 2;
 
+  const BgGradient: React.FC = () => {
+    return (
+      <div className="absolute w-full">
+        <div className="w-screen max-w-6xl scale-100 md:h-[30rem] h-[25rem] -translate-y-96 bg-gradient-radial from-blue-400/50 to-[70%] absolute z-10" />
+        <div className="w-screen max-w-6xl scale-150 md:h-[30rem] h-[25rem] -translate-y-96 bg-gradient-radial from-violet-800/10 to-[70%] absolute z-10" />
+        <div className="w-screen max-w-6xl scale-150 md:h-[30rem] h-[25rem] -translate-y-96 bg-gradient-radial from-violet-300/10 to-[70%] absolute z-10" />
+        <div className="w-full max-w-6xl scale-125 md:h-[42rem] h-[35rem] bg-gradient-radial from-indigo-800/30 to-[70%] absolute" />
+      </div>
+    );
+  };
   if (overview) {
     return (
       <div className="w-full flex flex-col flex-initial justify-center">
@@ -150,7 +161,7 @@ export default function ChatWithFiles() {
 
   return (
     <div
-      className="min-h-[100dvh] w-full flex justify-center"
+      className="min-h-[100dvh] w-full flex justify-center relative overflow-x-hidden "
       onDragOver={(e) => {
         e.preventDefault();
         setIsDragging(true);
@@ -167,6 +178,7 @@ export default function ChatWithFiles() {
         } as React.ChangeEvent<HTMLInputElement>);
       }}
     >
+      <BgGradient />
       <AnimatePresence>
         {isDragging && (
           <motion.div
@@ -182,30 +194,32 @@ export default function ChatWithFiles() {
           </motion.div>
         )}
       </AnimatePresence>
-      <Card className="w-full max-w-6xl h-full sm:h-fit mt-12 border-0">
-        <CardHeader className="text-center space-y-6">
+      <Card className="w-full max-w-6xl h-hlv md:h-fit md:mt-12 border-0 md:rounded-3xl rounded-none z-20 bg-transparent ">
+        <CardHeader className="text-center space-y-6 ">
           <div className="space-y-2">
-            <CardTitle className="text-2xl font-bold">
+            <CardTitle className="md:text-5xl text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-t dark:from-zinc-400 from-zinc-800 dark:to-foreground to-foreground rounded-2xl md:mb-8 mb-4">
               Thesis Supporter
             </CardTitle>
-            <CardDescription className="text-base">
+            <CardDescription className="text-sm md:text-lg text-foreground">
               Describe your thesis then upload a PDF file and Thesis Supporter
               will summarize it for you, and generate a report based on its
               suitability for your research.
             </CardDescription>
           </div>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmitWithFiles} className="space-y-4">
-            <input
-              type="text"
-              placeholder="Enter your thesis here"
+        <CardContent className=" mx-1 px-2 pt-2 rounded-xl md:p-6 dark:bg-zinc-500/20 bg-zinc-300/70 backdrop-blur-lg border dark:border-zinc-200/10 border-zinc-400/20">
+          <form
+            onSubmit={handleSubmitWithFiles}
+            className="space-y-4 flex flex-col items-center"
+          >
+            <textarea
+              placeholder="Enter your thesis here..."
               value={thesis}
               onChange={(e) => setThesis(e.target.value)}
-              className="w-full p-2 bg-transparent border-b border-muted-foreground/50 focus:border-primary focus:ring-0"
+              className="w-full p-2 text-sm md:text-lg border dark:border-zinc-300/20 border-zinc-400/40 focus:border-primary focus:ring-0 dark:bg-zinc-900/50 bg-zinc-400/30 rounded-t-lg rounded-l-lg min-h-36 max-h-96 hover:border-muted-foreground/50 transition-colors dark:placeholder-zinc-600 placeholder-zinc-500 "
             />
             <div
-              className={`relative flex flex-col items-center justify-center border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 transition-colors hover:border-muted-foreground/50`}
+              className={`relative flex flex-col w-full md:w-1/2 items-center justify-center border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 transition-colors hover:border-muted-foreground/50 dark:bg-zinc-900/60 bg-zinc-300 h-full`}
             >
               <input
                 type="file"
@@ -226,7 +240,7 @@ export default function ChatWithFiles() {
             </div>
             <Button
               type="submit"
-              className="w-full"
+              className="w-64 "
               disabled={files.length === 0}
             >
               {isLoadingOverview ? (
@@ -268,29 +282,8 @@ export default function ChatWithFiles() {
           </CardFooter>
         )}
       </Card>
-      <motion.div
-        className="flex flex-row gap-4 items-center justify-between fixed bottom-6 text-xs "
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-      >
-        <NextLink
-          target="_blank"
-          href="https://github.com/vercel-labs/ai-sdk-preview-pdf-support"
-          className="flex flex-row gap-2 items-center border px-2 py-1.5 rounded-md hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-800"
-        >
-          <GitIcon />
-          View Source Code
-        </NextLink>
 
-        <NextLink
-          target="_blank"
-          href="https://vercel.com/templates/next.js/ai-quiz-generator"
-          className="flex flex-row gap-2 items-center bg-zinc-900 px-2 py-1.5 rounded-md text-zinc-50 hover:bg-zinc-950 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-50"
-        >
-          <VercelIcon size={14} />
-          Deploy with Vercel
-        </NextLink>
-      </motion.div>
+      <ThemeButton className="absolute bottom-0 mb-8 " />
     </div>
   );
 }

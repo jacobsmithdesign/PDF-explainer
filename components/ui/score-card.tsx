@@ -66,7 +66,7 @@ const RadialScore = React.forwardRef<
       {...props}
     >
       <g transform={`rotate(90 50 50)`}>
-        <Circle colour="#52525b" score={100} />
+        <Circle colour="#71717a" score={100} />
         <Circle colour={colour} score={pct} />
       </g>
       <Text score={score} colour={colour} />
@@ -82,15 +82,15 @@ const ScoreCard = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
+      "rounded-xl border bg-card text-card-foreground",
       className,
       score < 5
         ? "bg-red-500/10 border-red-500/20"
         : score < 7
         ? "bg-yellow-500/10 border-yellow-500/20"
         : score < 9
-        ? "bg-lime-500/10 border-lime-500/20"
-        : "bg-green-500/10 border-green-500/20"
+        ? "bg-lime-500/20 border-lime-500/20"
+        : "bg-green-500/20 border-green-500/20"
     )}
     {...props}
   />
